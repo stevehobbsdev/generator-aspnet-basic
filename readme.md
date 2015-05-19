@@ -3,4 +3,4 @@
 A yeoman generator for a basic vNext 'Hello world' website
 
 ##Usage
-```$ yo aspnet-basic
+    $ yo aspnet-basic
