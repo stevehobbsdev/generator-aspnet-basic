@@ -2,13 +2,24 @@
 <html>
 <head>
 
-	<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" type="text/css">
-		
+	<% if(useGulp) { %>
+		<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" type="text/css">
+	<% } else { %>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css">
+	<% } %>
+
 </head>
 
 <body>
 	<div class="container">
 		@RenderBody()	
 	</div>
+
+	<% if(useGulp) { %>
+		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<% } else { %>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<% } %>
+
 </body>
 </html>

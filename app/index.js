@@ -17,7 +17,11 @@ module.exports = generators.Base.extend({
 				name: 'appname',
 				message: 'What\'s the name of your app?',
 				default: this.appname
-			}, 
+			}, {
+				type: 'confirm',
+				name: 'useGulp',
+				message: 'Use the Gulp build system?'
+			},
 			{
 				type: 'confirm',
 				name: 'bootstrap',
@@ -26,6 +30,7 @@ module.exports = generators.Base.extend({
 			
 				this.appname = answers.appname;
 				this.bootstrap = answers.bootstrap;
+				this.useGulp = answers.useGulp;
 
 			done();
 
@@ -44,10 +49,13 @@ module.exports = generators.Base.extend({
 
 		this.mkdir('wwwroot');
 
+		if(this.useGulp) {
+			this.template('_gulpfile.js', 'gulpfile.js');
+		}
+
 		if(this.bootstrap) {
 			this.template('_Layout_bootstrap.cshtml', this.destinationPath('Views/Shared/_Layout.cshtml'));
-			this.template('Index_bootstrap.cshtml', this.destinationPath('Views/Home/Index.cshtml'));
-			this.template('_gulpfile_bootstrap.js', 'gulpfile.js');
+			this.template('Index_bootstrap.cshtml', this.destinationPath('Views/Home/Index.cshtml'));		
 		}
 		else {
 			this.template('_Layout.cshtml', this.destinationPath('Views/Shared/_Layout.cshtml'));
@@ -64,10 +72,26 @@ module.exports = generators.Base.extend({
 	end: function() {
 
 		this.log('\r\n');
+
+		this.log('This site uses ' + chalk.blue('Asp.Net vNext') + ', which requires the build tools to be installed');
+		this.log('Please read ' + chalk.yellow('https://github.com/aspnet/home') + ' for more information')
+
+		this.log('\r\n');
 		this.log('Build commands:');
 		this.log(chalk.green('dnu restore') + '\tto restore packages');
 		this.log(chalk.green('dnu build') + '\tto build the project');
 		this.log(chalk.green('dnx . web') + '\tto run the project on ' + chalk.green('http://localhost:5000'));
+
+		if(this.useGulp) {
+
+			this.log('\r\n');
+			this.log('Gulp commands: ' + chalk.blue('Requires global gulp to be installed'));
+			this.log(chalk.green('gulp') + '\tRun default gulp task');
+
+			if(this.bootstrap) {
+				this.log(chalk.green('gulp bootstrap') + '\tCopy Twitter Bootstrap assets');
+			}
+		}
 
 	}
 });
