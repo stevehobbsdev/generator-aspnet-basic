@@ -35,7 +35,7 @@ module.exports = generators.Base.extend({
 	copyFiles: function() {
 
 		this.template('Startup.cs', 'Startup.cs');
-		this.template('_package.json', 'package.json');
+		this.template('_package.json.tpl', 'package.json');
 		this.template('_project.json', 'project.json');
 		this.template('_gitignore', '.gitignore');
 		
@@ -47,6 +47,7 @@ module.exports = generators.Base.extend({
 		if(this.bootstrap) {
 			this.template('_Layout_bootstrap.cshtml', this.destinationPath('Views/Shared/_Layout.cshtml'));
 			this.template('Index_bootstrap.cshtml', this.destinationPath('Views/Home/Index.cshtml'));
+			this.template('_gulpfile_bootstrap.js', 'gulpfile.js');
 		}
 		else {
 			this.template('_Layout.cshtml', this.destinationPath('Views/Shared/_Layout.cshtml'));

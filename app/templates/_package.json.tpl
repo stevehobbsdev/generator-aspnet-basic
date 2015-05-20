@@ -6,6 +6,11 @@
   },
   "license": "ISC",
   "dependencies": {
-  	"bootstrap": "^3.3.4"
+  	<% if(bootstrap) { %>
+  		"bootstrap": "^3.3.4"
+  	<% } %>
+  },
+  "devDependencies": {
+  	"gulp":""
   }
 }
