@@ -12,6 +12,7 @@
   "author": "Steve Hobbs <elkdanger@gmail.com> (http://stevescodingblog.co.uk/)",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^1.0.0",
     "yeoman-generator": "^0.20.1"
   }
 }

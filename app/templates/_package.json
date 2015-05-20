@@ -1,0 +1,11 @@
+{
+  "name": "<%= appname %>",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+  },
+  "license": "ISC",
+  "dependencies": {
+  	"bootstrap": "^3.3.4"
+  }
+}
