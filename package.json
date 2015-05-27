@@ -4,7 +4,7 @@
   "description": "A basic Asp.Net vNext template",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "yeoman-generator"
@@ -14,5 +14,9 @@
   "dependencies": {
     "chalk": "^1.0.0",
     "yeoman-generator": "^0.20.1"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.5"
   }
 }
