@@ -1,16 +1,22 @@
 {
   "name": "generator-aspnet-basic",
-  "version": "0.1.0",
-  "description": "A basic Asp.Net vNext template",
+  "version": "1.0.0",
+  "description": "A yeoman generator for a basic Asp.Net vNext website",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "vnext",
+    "aspnet"
+    "mvc"
   ],
   "author": "Steve Hobbs <elkdanger@gmail.com> (http://stevescodingblog.co.uk/)",
   "license": "MIT",
+  "homepage": "https://github.com/elkdanger/generator-aspnet-basic",
+  "bugs": "https://github.com/elkdanger/generator-aspnet-basic/issues",
+  "repository": "https://github.com/elkdanger/generator-aspnet-basic.git",
   "dependencies": {
     "chalk": "^1.0.0",
     "yeoman-generator": "^0.20.1"
