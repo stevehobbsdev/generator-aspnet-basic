@@ -1,6 +1,6 @@
 using Microsoft.AspNet.Mvc;
 
-namespace VNext 
+namespace <%= namespace %> 
 {
 	public class HomeController : Controller
 	{

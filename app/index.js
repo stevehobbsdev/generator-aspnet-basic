@@ -1,5 +1,6 @@
 var generators = require('yeoman-generator');
 var chalk = require('chalk');
+var util = require('../util');
 
 module.exports = generators.Base.extend({
 
@@ -29,8 +30,17 @@ module.exports = generators.Base.extend({
 			}], function(answers) {
 			
 				this.appname = answers.appname;
+
+				var symbol = util.symbolise(this.appname);
+
+				this.namespace = symbol;
+				this.packageName = symbol;
 				this.bootstrap = answers.bootstrap;
 				this.useGulp = answers.useGulp;
+
+				this.log('\r\n');
+				this.log('Setting the application namespace to ' + chalk.green(this.namespace));
+				this.log('\r\n');
 
 			done();
 

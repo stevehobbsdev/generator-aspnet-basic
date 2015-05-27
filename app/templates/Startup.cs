@@ -3,7 +3,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;
 using Microsoft.Framework.DependencyInjection;
 
-namespace <%= appname %>
+namespace <%= namespace %>
 {
 	public class Startup
 	{

@@ -1,5 +1,5 @@
 {
-  "name": "<%= appname %>",
+  "name": "<%= packageName %>",
   "version": "0.0.0",
   "description": "",
   "scripts": {

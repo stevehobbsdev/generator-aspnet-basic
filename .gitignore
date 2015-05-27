@@ -27,4 +27,4 @@ build/Release
 node_modules
 
 # Local test dir
-gen-test
+test/tmp
