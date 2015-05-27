@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/elkdanger/generator-aspnet-basic.svg?branch=master)](https://travis-ci.org/elkdanger/generator-aspnet-basic)
-
-# Generator - Asp.Net vNext Basic Website 
+# Generator - Asp.Net vNext Basic Website [![Build Status](https://travis-ci.org/elkdanger/generator-aspnet-basic.svg?branch=master)](https://travis-ci.org/elkdanger/generator-aspnet-basic)
 A yeoman generator for a basic vNext 'Hello world' website.
 
 The motivation for this is down to the official generator taking an 'all or nothing' approach to the generation of a vNext website - you can either choose to generate an empty project, or a site that contains everything you need in terms of a fully functioning site, with account support, databases and so on.
