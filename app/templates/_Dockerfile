@@ -1,0 +1,14 @@
+FROM microsoft/aspnet:1.0.0-beta4
+
+ADD . /<%= packageName %>
+WORKDIR /<%= packageName %>
+
+EXPOSE 5001
+
+RUN dnu restore
+
+<% if(useGulp) { %>RUN curl -sL https://deb.nodesource.com/setup | bash -
+RUN apt-get install -y nodejs
+RUN npm install -g gulp
+RUN gulp
+<% } %>ENTRYPOINT dnx . kestrel

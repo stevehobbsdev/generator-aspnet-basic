@@ -27,6 +27,12 @@ module.exports = generators.Base.extend({
 				type: 'confirm',
 				name: 'bootstrap',
 				message: 'Include Twitter Bootstrap support?'
+			},
+			{
+				type: 'confirm',
+				name: 'useDocker',
+				message: 'Create a docker file?',
+				default: false
 			}], function(answers) {
 			
 				this.appname = answers.appname;
@@ -37,6 +43,7 @@ module.exports = generators.Base.extend({
 				this.packageName = symbol;
 				this.bootstrap = answers.bootstrap;
 				this.useGulp = answers.useGulp;
+				this.useDocker = answers.useDocker;
 
 				this.log('\r\n');
 				this.log('Setting the application namespace to ' + chalk.green(this.namespace));
@@ -71,6 +78,10 @@ module.exports = generators.Base.extend({
 			this.template('_Layout.cshtml', this.destinationPath('Views/Shared/_Layout.cshtml'));
 			this.template('Index.cshtml', this.destinationPath('Views/Home/Index.cshtml'));
 		}
+
+		if(this.useDocker) {
+			this.template('_Dockerfile', this.destinationPath('Dockerfile'));
+		}
 	},
 
 	installDependencies: function() {
@@ -101,6 +112,14 @@ module.exports = generators.Base.extend({
 			if(this.bootstrap) {
 				this.log(chalk.green('gulp bootstrap') + '\tCopy Twitter Bootstrap assets');
 			}
+		}
+
+		if(this.useDocker) {
+			this.log('\r\n');
+			this.log('To build a new ' + chalk.green('docker image') + ', use:');
+			this.log('sudo docker build -t ' + this.packageName + ' .\r\n');
+			this.log('To run the image, use:');
+			this.log('sudo docker run -t -d p 80:5001 ' + this.packageName);
 		}
 
 	}
