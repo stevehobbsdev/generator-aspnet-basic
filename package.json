@@ -4,7 +4,8 @@
   "description": "A yeoman generator for a basic Asp.Net vNext website",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "prepublish": "npm test"
   },
   "keywords": [
     "yeoman-generator",
