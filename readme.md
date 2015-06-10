@@ -15,6 +15,10 @@ You will also be asked if you would like:
 - Support for the Gulp build system
 - Twitter Bootstrap to be included by default
 
+## Options
+
+- `--docker` Generate a [Docker file][2] based on the latest [Microsoft AspNet docker image][3], which generates a container for your application
+
 ## Commands
 
 The following gulp commands are available, provided you have chosen Gulp support when running the generator. This assumes that you have [installed Gulp globally][1]:
@@ -23,3 +27,5 @@ The following gulp commands are available, provided you have chosen Gulp support
 - `$ gulp bootstrap` Copies the Bootstrap assets to the wwwroot folder (if you have chosen Bootstrap support when generating the site)
 
 [1]: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
+[2]: https://www.docker.com/
+[3]: https://registry.hub.docker.com/u/microsoft/aspnet/
