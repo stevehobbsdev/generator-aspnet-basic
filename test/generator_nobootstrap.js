@@ -21,6 +21,9 @@ describe('The generator', function() {
 					bootstrap: false,
 					useGulp: true
 				})
+				.withOptions({
+					docker: true
+				})
 				.on('ready', function(generator) {
 
 				})

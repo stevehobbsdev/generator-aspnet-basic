@@ -21,6 +21,9 @@ describe('The generator', function() {
 					bootstrap: true,
 					useGulp: true
 				})
+				.withOptions({
+					docker: true
+				})
 				.on('ready', function(generator) {
 
 				})
@@ -108,6 +111,35 @@ describe('The generator', function() {
 				assert.fileContent(indexFile, '<div class="container">');
 			});
 
+		});
+
+		describe('the docker file', function() {
+
+			var dockerFile = 'Dockerfile';
+
+			it('is generated', function() {
+				assert.file(dockerFile);
+			});
+
+			it('has the right app name', function() {
+				assert.fileContent(dockerFile, 'ADD . \/' + consts.expectedPackageName);
+			});
+
+			it('has the right working dir', function() {
+				assert.fileContent(dockerFile, 'WORKDIR \/' + consts.expectedPackageName);
+			})
+
+			describe('with gulp enabled', function() {
+
+				it('installs node', function() {
+					assert.fileContent(dockerFile, 'RUN apt-get install -y nodejs');
+				});
+
+				it('runs gulp', function() {
+					assert.fileContent(dockerFile, 'RUN gulp');
+				});
+				
+			});
 		});
 	});
 });

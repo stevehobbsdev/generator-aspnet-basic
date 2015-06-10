@@ -21,6 +21,9 @@ describe('The generator', function() {
 					bootstrap: true,
 					useGulp: false
 				})
+				.withOptions({
+					docker: true
+				})
 				.on('end', done);
 		});
 
@@ -52,6 +55,20 @@ describe('The generator', function() {
 				assert.fileContent(layoutFile, /href="https:\/\/maxcdn\.bootstrapcdn\.com\/bootstrap\/[\d]\.[\d]\.[\d]\/css\/bootstrap\.min\.css"/);
 				assert.fileContent(layoutFile, /src="https:\/\/maxcdn\.bootstrapcdn\.com\/bootstrap\/[\d]\.[\d]\.[\d]\/js\/bootstrap\.min\.js"/);
 			});
+		});
+
+		describe('the docker file', function() {
+
+			var dockerFile = 'Dockerfile'
+
+			it('does not install node', function() {
+				assert.noFileContent(dockerFile, 'RUN apt-get install -y nodejs')
+			});
+
+			it('does not run gulp', function() {
+				assert.noFileContent(dockerFile, 'RUN gulp');
+			});
+
 		});
 	});
 });

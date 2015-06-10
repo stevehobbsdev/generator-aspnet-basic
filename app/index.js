@@ -6,6 +6,12 @@ module.exports = generators.Base.extend({
 
 	constructor: function() {
 		generators.Base.apply(this, arguments);
+
+		this.option('docker', {
+			desc: 'If specified, a Dockerfile is generated for the app, enabling the app to be used inside a Docker container',
+			type: 'Boolean',
+			defaults: false
+		});
 	},
 
 	prompting: function() {
@@ -27,12 +33,6 @@ module.exports = generators.Base.extend({
 				type: 'confirm',
 				name: 'bootstrap',
 				message: 'Include Twitter Bootstrap support?'
-			},
-			{
-				type: 'confirm',
-				name: 'useDocker',
-				message: 'Create a docker file?',
-				default: false
 			}], function(answers) {
 			
 				this.appname = answers.appname;
@@ -43,8 +43,7 @@ module.exports = generators.Base.extend({
 				this.packageName = symbol;
 				this.bootstrap = answers.bootstrap;
 				this.useGulp = answers.useGulp;
-				this.useDocker = answers.useDocker;
-
+				
 				this.log('\r\n');
 				this.log('Setting the application namespace to ' + chalk.green(this.namespace));
 				this.log('\r\n');
@@ -52,6 +51,12 @@ module.exports = generators.Base.extend({
 			done();
 
 		}.bind(this));
+	},
+
+	selectDocker: function() {
+
+		this.useDocker = this.options.docker;
+
 	},
 
 	copyFiles: function() {
