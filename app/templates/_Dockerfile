@@ -1,4 +1,4 @@
-FROM microsoft/aspnet:1.0.0-beta4
+FROM microsoft/aspnet:latest
 
 ADD . /<%= packageName %>
 WORKDIR /<%= packageName %>
