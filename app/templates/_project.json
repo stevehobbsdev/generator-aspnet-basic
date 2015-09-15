@@ -2,10 +2,10 @@
   "webroot": "wwwroot",
   "dependencies": {
     "Kestrel": "1.0.0-*",
-    "Microsoft.AspNet.Server.WebListener": "1.0.0-beta6",
-    "microsoft.AspNet.Mvc": "6.0.0-beta6",
-    "microsoft.AspNet.Diagnostics": "1.0.0-beta6",
-    "Microsoft.AspNet.StaticFiles": "1.0.0-beta6"
+    "Microsoft.AspNet.Server.WebListener": "1.0.0-beta7",
+    "microsoft.AspNet.Mvc": "6.0.0-beta7",
+    "microsoft.AspNet.Diagnostics": "1.0.0-beta7",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-beta7"
   },
   "commands": {
     "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000",
