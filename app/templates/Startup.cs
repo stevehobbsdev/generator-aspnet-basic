@@ -20,7 +20,7 @@ namespace <%= namespace %>
 		{
 			app.UseStaticFiles();
 
-			app.UseErrorPage();
+			app.UseDeveloperExceptionPage();
 
 			app.UseMvc(routes => {
 				
