@@ -11,7 +11,7 @@
     "Microsoft.AspNet.IISPlatformHandler": "1.0.0-beta8"
   },
   "commands": {
-    "kestrel": "Microsoft.AspNet.Server.Kestrel"
+    "web": "Microsoft.AspNet.Server.Kestrel"
   },
   "frameworks": {
     "dnx451": {},
