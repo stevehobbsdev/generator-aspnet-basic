@@ -107,7 +107,7 @@ module.exports = generators.Base.extend({
 		this.log('Build commands:');
 		this.log(chalk.green('dnu restore') + '\tto restore packages');
 		this.log(chalk.green('dnu build') + '\tto build the project');
-		this.log(chalk.green('dnx . web') + '\tto run the project on ' + chalk.green('http://localhost:5000'));
+		this.log(chalk.green('dnx web') + '\tto run the project on ' + chalk.green('http://localhost:5000'));
 
 		if(this.useGulp) {
 

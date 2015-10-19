@@ -11,4 +11,4 @@ RUN dnu restore
 RUN apt-get install -y nodejs
 RUN npm install -g gulp
 RUN gulp
-<% } %>ENTRYPOINT dnx . kestrel
+<% } %>ENTRYPOINT dnx kestrel
