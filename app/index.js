@@ -70,6 +70,7 @@ module.exports = generators.Base.extend({
 		this.template('_ViewStart.cshtml', this.destinationPath('Views/_ViewStart.cshtml'));
 
 		this.mkdir('wwwroot');
+		//this.template('_web.config', this.destinationPath('wwwroot/web.config'));
 
 		if(this.useGulp) {
 			this.template('_gulpfile.js', 'gulpfile.js');
