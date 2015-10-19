@@ -112,6 +112,14 @@ describe('The generator', function() {
 			});
 
 		});
+		
+		describe('the web.config file', function() {
+			var file = 'wwwroot/web.config';
+			
+			it ('is generated', function() {
+				assert.file(file);
+			})
+		})
 
 		describe('the docker file', function() {
 
