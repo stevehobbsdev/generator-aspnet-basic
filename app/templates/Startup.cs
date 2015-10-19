@@ -18,10 +18,14 @@ namespace <%= namespace %>
 		
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env) 
 		{
-			app.UseStaticFiles();
-
-			app.UseDeveloperExceptionPage();
-
+            app.UseStaticFiles();
+            app.UseIISPlatformHandler();
+            
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+			
 			app.UseMvc(routes => {
 				
 				routes.MapRoute(

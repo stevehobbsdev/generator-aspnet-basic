@@ -1,15 +1,17 @@
 {
   "webroot": "wwwroot",
+  "tooling": {
+    "defaultNamespace": "<%= namespace %>"
+  },
   "dependencies": {
-    "Microsoft.Aspnet.Server.Kestrel": "1.0.0-beta8",
-    "Microsoft.AspNet.Server.WebListener": "1.0.0-beta8",
+    "Microsoft.AspNet.Server.Kestrel": "1.0.0-beta8",
     "microsoft.AspNet.Mvc": "6.0.0-beta8",
     "microsoft.AspNet.Diagnostics": "1.0.0-beta8",
-    "Microsoft.AspNet.StaticFiles": "1.0.0-beta8"
+    "Microsoft.AspNet.StaticFiles": "1.0.0-beta8",
+    "Microsoft.AspNet.IISPlatformHandler": "1.0.0-beta8"
   },
   "commands": {
-    "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000",
-    "kestrel": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5001"
+    "kestrel": "Microsoft.AspNet.Server.Kestrel"
   },
   "frameworks": {
     "dnx451": {},

@@ -69,15 +69,22 @@ describe('The generator', function() {
 				assert.fileContent('gulpfile.js', 'gulp\.task\(\'bootstrap\', ');
 			})
 		});
+		
+		describe('project.json', function() {
+			
+			it('is generated', function() {
+				assert.file('project.json')
+			})
+						
+			it('has the right tooling namespace', function() {
+				assert.fileContent('project.json', '"defaultNamespace": "' + consts.expectedNamespace + '"');
+			});
+		})
 
 		describe('other supporting files', function() {
 
 			it('generates .gitignore', function() {
 				assert.file('.gitignore');
-			});
-
-			it('generates a project file', function() {
-				assert.file('project.json');
 			});
 
 			it('generates the viewstart file', function() {
