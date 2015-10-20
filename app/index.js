@@ -1,5 +1,6 @@
 var generators = require('yeoman-generator');
 var chalk = require('chalk');
+var path = require('path');
 var util = require('../util');
 
 module.exports = generators.Base.extend({
@@ -23,7 +24,7 @@ module.exports = generators.Base.extend({
 				type: 'input',
 				name: 'appname',
 				message: 'What\'s the name of your app?',
-				default: this.appname
+				default: 'Blank Site'
 			}, {
 				type: 'confirm',
 				name: 'useGulp',
@@ -89,11 +90,14 @@ module.exports = generators.Base.extend({
 			this.template('_Dockerfile', this.destinationPath(this.appname + '/Dockerfile'));
 		}
 	},
+	
+	changeDir: function() {
+		var sitePath = path.join(process.cwd(), this.appname);
+		process.chdir(sitePath);
+	},
 
 	installDependencies: function() {
-
 		this.npmInstall();
-
 	},
 
 	end: function() {
@@ -104,7 +108,7 @@ module.exports = generators.Base.extend({
 		this.log('Please read ' + chalk.yellow('https://github.com/aspnet/home') + ' for more information')
 
 		this.log('\r\n');
-		this.log('Do ' + chalk.green('cd ' + this.appname) + ', then:')
+		this.log('Do ' + chalk.green('cd "' + this.appname + '"') + ', then:\r\n')
 		this.log('Build commands:');
 		this.log(chalk.green('dnu restore') + '\tto restore packages');
 		this.log(chalk.green('dnu build') + '\tto build the project');
