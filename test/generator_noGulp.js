@@ -1,12 +1,9 @@
 var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var path = require('path');
+var support = require('./support')
 
-var consts = {
-	appName: 'Test App',
-	expectedNamespace: 'Test_App',
-	expectedPackageName: 'Test_App'
-};
+var consts = support.constants;
 
 describe('The generator', function() {
 
@@ -29,23 +26,23 @@ describe('The generator', function() {
 
 		describe('gulpfile.js', function() {
 			it('is not generated', function() {
-				assert.noFile('gulpfile.js');
+				assert.noFile(support.appPath('gulpfile.js'));
 			});
 		});
 
 		describe('package.json', function() {
 			it('is generated', function() {
-				assert.file('package.json');
+				assert.file(support.appPath('package.json'));
 			});
 
 			it('does not load bootstrap as a dependency', function() {
-				assert.noFileContent('package.json', /bootstrap: \^[\d]\.[\d]\.[\d]/);
+				assert.noFileContent(support.appPath('package.json'), /bootstrap: \^[\d]\.[\d]\.[\d]/);
 			});
 		});
 
 		describe('the layout file', function() {
 
-			var layoutFile = 'Views/Shared/_Layout.cshtml';
+			var layoutFile = support.appPath('Views/Shared/_Layout.cshtml');
 
 			it('is generated', function() {
 				assert.file(layoutFile);
@@ -59,7 +56,7 @@ describe('The generator', function() {
 
 		describe('the docker file', function() {
 
-			var dockerFile = 'Dockerfile'
+			var dockerFile = support.appPath('Dockerfile')
 
 			it('does not install node', function() {
 				assert.noFileContent(dockerFile, 'RUN apt-get install -y nodejs')

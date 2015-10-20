@@ -1,12 +1,9 @@
 var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var path = require('path');
+var support = require('./support')
 
-var consts = {
-	appName: 'Test App',
-	expectedNamespace: 'Test_App',
-	expectedPackageName: 'Test_App'
-};
+var consts = support.constants;
 
 describe('The generator', function() {
 
@@ -29,7 +26,7 @@ describe('The generator', function() {
 
 		it('does not copy the docker file', function() {
 
-			assert.noFile('Dockerfile');
+			assert.noFile(support.appPath('Dockerfile'));
 
 		});
 	});

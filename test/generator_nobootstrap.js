@@ -1,12 +1,9 @@
 var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var path = require('path');
+var support = require('./support')
 
-var consts = {
-	appName: 'Test App',
-	expectedNamespace: 'Test_App',
-	expectedPackageName: 'Test_App'
-};
+var consts = support.constants;
 
 describe('The generator', function() {
 
@@ -32,31 +29,31 @@ describe('The generator', function() {
 
 		describe('package.json', function() {
 			it('is generated', function() {
-				assert.file('package.json');
+				assert.file(support.appPath('package.json'));
 			});
 
 			it('does not load bootstrap as a dependency', function() {
-				assert.noFileContent('package.json', /bootstrap: \^[\d]\.[\d]\.[\d]/);
+				assert.noFileContent(support.appPath('package.json'), /bootstrap: \^[\d]\.[\d]\.[\d]/);
 			});
 		});
 
 		describe('gulpfile.js', function() {
 			it('is generated', function() {
-				assert.file('gulpfile.js');
+				assert.file(support.appPath('gulpfile.js'));
 			});
 
 			it('does not contain the bootstrap task', function() {
-				assert.noFileContent('gulpfile.js', 'gulp\.task\(\'bootstrap\', ');
+				assert.noFileContent(support.appPath('gulpfile.js'), 'gulp\.task\(\'bootstrap\', ');
 			})
 
 			it('contains a default gulp task', function() {
-				assert.fileContent('gulpfile.js', /gulp\.task\('default', /);
+				assert.fileContent(support.appPath('gulpfile.js'), /gulp\.task\('default', /);
 			});
 		});
 
 		describe('the layout file', function() {
 
-			var layoutFile = 'Views/Shared/_Layout.cshtml';
+			var layoutFile = support.appPath('Views/Shared/_Layout.cshtml');
 
 			it('is generated', function() {
 				assert.file(layoutFile);
@@ -70,7 +67,7 @@ describe('The generator', function() {
 
 		describe('the index file', function() {
 
-			var indexFile = 'Views/Home/Index.cshtml';
+			var indexFile = support.appPath('Views/Home/Index.cshtml');
 
 			it('is generated', function() {
 				assert.file(indexFile);

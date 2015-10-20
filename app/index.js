@@ -61,32 +61,32 @@ module.exports = generators.Base.extend({
 
 	copyFiles: function() {
 
-		this.template('Startup.cs', 'Startup.cs');
-		this.template('_package.json.tpl', 'package.json');
-		this.template('_project.json', 'project.json');
-		this.template('_gitignore', '.gitignore');
+		this.template('Startup.cs', this.appname + '/Startup.cs');
+		this.template('_package.json.tpl', this.appname + '/package.json');
+		this.template('_project.json', this.appname + '/project.json');
+		this.template('_gitignore', this.appname + '/.gitignore');
 		
-		this.template('HomeController.cs', this.destinationPath('Controllers/HomeController.cs'));
-		this.template('_ViewStart.cshtml', this.destinationPath('Views/_ViewStart.cshtml'));
+		this.template('HomeController.cs', this.destinationPath(this.appname + '/Controllers/HomeController.cs'));
+		this.template('_ViewStart.cshtml', this.destinationPath(this.appname + '/Views/_ViewStart.cshtml'));
 
-		this.mkdir('wwwroot');
-		this.template('_web.config', this.destinationPath('wwwroot/web.config'));
+		this.mkdir(this.appname + '/wwwroot');
+		this.template('_web.config', this.destinationPath(this.appname + '/wwwroot/web.config'));
 
 		if(this.useGulp) {
-			this.template('_gulpfile.js', 'gulpfile.js');
+			this.template('_gulpfile.js', this.appname + '/gulpfile.js');
 		}
 
 		if(this.bootstrap) {
-			this.template('_Layout_bootstrap.cshtml', this.destinationPath('Views/Shared/_Layout.cshtml'));
-			this.template('Index_bootstrap.cshtml', this.destinationPath('Views/Home/Index.cshtml'));		
+			this.template('_Layout_bootstrap.cshtml', this.destinationPath(this.appname + '/Views/Shared/_Layout.cshtml'));
+			this.template('Index_bootstrap.cshtml', this.destinationPath(this.appname + '/Views/Home/Index.cshtml'));		
 		}
 		else {
-			this.template('_Layout.cshtml', this.destinationPath('Views/Shared/_Layout.cshtml'));
-			this.template('Index.cshtml', this.destinationPath('Views/Home/Index.cshtml'));
+			this.template('_Layout.cshtml', this.destinationPath(this.appname + '/Views/Shared/_Layout.cshtml'));
+			this.template('Index.cshtml', this.destinationPath(this.appname + '/Views/Home/Index.cshtml'));
 		}
 
 		if(this.useDocker) {
-			this.template('_Dockerfile', this.destinationPath('Dockerfile'));
+			this.template('_Dockerfile', this.destinationPath(this.appname + '/Dockerfile'));
 		}
 	},
 
@@ -104,6 +104,7 @@ module.exports = generators.Base.extend({
 		this.log('Please read ' + chalk.yellow('https://github.com/aspnet/home') + ' for more information')
 
 		this.log('\r\n');
+		this.log('Do ' + chalk.green('cd ' + this.appname) + ', then:')
 		this.log('Build commands:');
 		this.log(chalk.green('dnu restore') + '\tto restore packages');
 		this.log(chalk.green('dnu build') + '\tto build the project');

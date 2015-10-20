@@ -1,12 +1,9 @@
 var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var path = require('path');
+var support = require('./support');
 
-var consts = {
-	appName: 'Test App',
-	expectedNamespace: 'Test_App',
-	expectedPackageName: 'Test_App'
-};
+var consts = support.constants;
 
 describe('The generator', function() {
 
@@ -32,69 +29,69 @@ describe('The generator', function() {
 
 		describe('the startup file', function() {
 			it('is generated', function() {
-				assert.file('Startup.cs');
+				assert.file(support.appPath('Startup.cs'));
 			});
 
 			it('has the correct namespace', function() {
-				assert.fileContent('Startup.cs', 'namespace ' + consts.expectedNamespace)
+				assert.fileContent(support.appPath('Startup.cs'), 'namespace ' + consts.expectedNamespace)
 			});
 		});
 
 		describe('package.json', function() {
 			it('is generated', function() {
-				assert.file('package.json');
+				assert.file(support.appPath('package.json'));
 			});
 
 			it('has the right app name', function() {
-				assert.fileContent('package.json', '"name": "' + consts.expectedPackageName + '"');
+				assert.fileContent(support.appPath('package.json'), '"name": "' + consts.expectedPackageName + '"');
 			});
 		});
 
 		describe('HomeController', function() {
 			it('is generated', function() {
-				assert.file('Controllers/HomeController.cs');
+				assert.file(support.appPath('Controllers/HomeController.cs'));
 			});
 
 			it('has the right namespace', function() {
-				assert.fileContent('Controllers/HomeController.cs', 'namespace ' + consts.expectedNamespace);
+				assert.fileContent(support.appPath('Controllers/HomeController.cs'), 'namespace ' + consts.expectedNamespace);
 			});
 		});
 
 		describe('gulpfile.js', function() {
 			it('is generated', function() {
-				assert.file('gulpfile.js');
+				assert.file(support.appPath('gulpfile.js'));
 			});
 
 			it('contains the bootstrap task', function() {
-				assert.fileContent('gulpfile.js', 'gulp\.task\(\'bootstrap\', ');
+				assert.fileContent(support.appPath('gulpfile.js'), 'gulp\.task\(\'bootstrap\', ');
 			})
 		});
 		
 		describe('project.json', function() {
 			
 			it('is generated', function() {
-				assert.file('project.json')
+				assert.file(support.appPath('project.json'))
 			})
 						
 			it('has the right tooling namespace', function() {
-				assert.fileContent('project.json', '"defaultNamespace": "' + consts.expectedNamespace + '"');
+				assert.fileContent(support.appPath('project.json'), '"defaultNamespace": "' + consts.expectedNamespace + '"');
 			});
 		})
 
 		describe('other supporting files', function() {
 
 			it('generates .gitignore', function() {
-				assert.file('.gitignore');
+				assert.file(support.appPath('.gitignore'));
 			});
 
 			it('generates the viewstart file', function() {
-				assert.file('Views/_ViewStart.cshtml');
+				assert.file(support.appPath('Views/_ViewStart.cshtml'));
 			});
 		});
 
 		describe('the layout file', function() {
 
-			var layoutFile = 'Views/Shared/_Layout.cshtml';
+			var layoutFile = support.appPath('Views/Shared/_Layout.cshtml');
 
 			it('is generated', function() {
 				assert.file(layoutFile);
@@ -108,7 +105,7 @@ describe('The generator', function() {
 
 		describe('the index file', function() {
 
-			var indexFile = 'Views/Home/Index.cshtml';
+			var indexFile = support.appPath('Views/Home/Index.cshtml');
 
 			it('is generated', function() {
 				assert.file(indexFile);
@@ -121,7 +118,7 @@ describe('The generator', function() {
 		});
 		
 		describe('the web.config file', function() {
-			var file = 'wwwroot/web.config';
+			var file = support.appPath('wwwroot/web.config');
 			
 			it ('is generated', function() {
 				assert.file(file);
@@ -130,7 +127,7 @@ describe('The generator', function() {
 
 		describe('the docker file', function() {
 
-			var dockerFile = 'Dockerfile';
+			var dockerFile = support.appPath('Dockerfile');
 
 			it('is generated', function() {
 				assert.file(dockerFile);
