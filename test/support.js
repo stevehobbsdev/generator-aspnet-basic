@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = {
 	constants: {
 		appName: 'Test App',
@@ -5,7 +7,7 @@ module.exports = {
 		expectedPackageName: 'Test_App'
 	},
 	
-	appPath: function(path) {
-		return this.constants.appName + '/' + path
+	appPath: function(p) {
+		return path.join(__dirname, 'tmp', this.constants.appName, p);
 	}
 }
